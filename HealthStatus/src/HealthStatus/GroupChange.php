@@ -30,6 +30,7 @@ use pocketmine\event\Listener;
 use _64FF00\PurePerms\event\PPGroupChangedEvent;
 
 use HealthStatus\Main;
+use HealthStatus\Task;
 
 class GroupChange implements Listener {
 

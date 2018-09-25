@@ -26,19 +26,18 @@
 
 namespace HealthStatus;
 
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 
 use HealthStatus\Main;
 
-class Task extends PluginTask {
+class Task extends Task {
 
-    public function __construct(Main $plugin, $player) {
-        parent::__construct($plugin);
+    public function __construct(Main $plugin, Player $player) {
         $this->plugin = $plugin;
         $this->player = $player;
     }
     
-    public function onRun($tick) {
+    public function onRun(int $tick) : void {
         $this->plugin = $this->getOwner();
         $this->plugin->setHealthNametag($this->player);
     }

@@ -41,7 +41,7 @@ class GroupChange implements Listener {
         $this->player = $event->getPlayer();
         $this->config = $this->plugin->getConfig()->getAll();
         if($this->config["Nametag"]["Enabled"] === true) {
-            $this->plugin->getServer()->getScheduler()->scheduleDelayedTask(new Task($this->plugin, $this->player), 1);
+            $this->plugin->getScheduler()->scheduleDelayedTask(new Task($this->plugin, $this->player), 1);
         }
     }
 

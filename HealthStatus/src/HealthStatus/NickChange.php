@@ -29,7 +29,7 @@ namespace HealthStatus;
 use pocketmine\event\Listener;
 use EssentialsPE\Events\PlayerNickChangeEvent;
 
-use HealthStatus\Main;
+use HealthStatus\{Main, Task};
 
 class NickChange implements Listener {
 
@@ -42,7 +42,7 @@ class NickChange implements Listener {
         $this->player = $event->getPlayer();
         $this->config = $this->plugin->getConfig()->getAll();
         if($this->config["Nametag"]["Enabled"] === true) {
-            $this->plugin->getServer()->getScheduler()->scheduleDelayedTask(new Task($this, $this->player), 1);
+            $this->plugin->getScheduler()->scheduleDelayedTask(new Task($this, $this->player), 1);
         }
     }
 

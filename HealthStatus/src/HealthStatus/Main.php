@@ -35,15 +35,18 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityRegainHealthEvent;
 use pocketmine\Player;
 
+
+use HealthStatus\{NickChange, GroupChange, Task};
+
 class Main extends PluginBase implements Listener {
 
-    public function onEnable() {
+    public function onEnable() : void {
         $this->saveDefaultConfig();
         $this->registerEvents();
         $this->getLogger()->info(TextFormat::GREEN . "HealthStatus Beta By CrazedMiner Enabled!");
     }
 
-    public function onDisable() {
+    public function onDisable() : void {
         $this->getLogger()->info(TextFormat::GREEN . "HealthStatus Beta By CrazedMiner Disabled!");
     }
     
@@ -57,7 +60,7 @@ class Main extends PluginBase implements Listener {
         }
     }
     
-    public function translateColors($symbol, $message){
+    public function translateColors(char $symbol, string $message){
 	
         $message = str_replace($symbol."0", TextFormat::BLACK, $message);
         $message = str_replace($symbol."1", TextFormat::DARK_BLUE, $message);
@@ -90,7 +93,7 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $config = $this->getConfig()->getAll();
         if($config["Nametag"]["Enabled"] === true) {
-            $this->getServer()->getScheduler()->scheduleDelayedTask(new Task($this, $player), 1);
+            $this->getScheduler()->scheduleDelayedTask(new Task($this, $player), 1);
         }
     }
     
@@ -98,7 +101,7 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $config = $this->getConfig()->getAll();
         if($config["Nametag"]["Enabled"] === true) {
-            $this->getServer()->getScheduler()->scheduleDelayedTask(new Task($this, $player), 1);
+            $this->getScheduler()->scheduleDelayedTask(new Task($this, $player), 1);
         }
     }
     
@@ -106,7 +109,7 @@ class Main extends PluginBase implements Listener {
         $entity = $event->getEntity();
         $config = $this->getConfig()->getAll();
         if($config["Nametag"]["Enabled"] === true) {
-            $this->getServer()->getScheduler()->scheduleDelayedTask(new Task($this, $entity), 1);
+            $this->getScheduler()->scheduleDelayedTask(new Task($this, $entity), 1);
         }
     }
     
@@ -114,7 +117,7 @@ class Main extends PluginBase implements Listener {
         $entity = $event->getEntity();
         $config = $this->getConfig()->getAll();
         if($config["Nametag"]["Enabled"] === true) {
-            $this->getServer()->getScheduler()->scheduleDelayedTask(new Task($this, $entity), 1);
+            $this->getScheduler()->scheduleDelayedTask(new Task($this, $entity), 1);
         }
     }
     
